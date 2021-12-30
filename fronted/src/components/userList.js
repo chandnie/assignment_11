@@ -2,10 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
+
 export default function UserList(props) {
   let navigate = useNavigate();
   const [list, setList] = useState([]);
   const [search, setSearch] = useState([]);
+  
+  
   useEffect(() => {
     if (!props.userDetail) {
       navigate("/");
@@ -20,6 +24,8 @@ export default function UserList(props) {
         console.log(error);
       });
   }, []);
+  
+  
 
   const update = (e) => {
     let searchValue = e.target.value;
@@ -32,6 +38,8 @@ export default function UserList(props) {
       setList(search);
     }
   };
+  
+  
   const deleteUser = (id) => {
     axios
       .delete("/delete/" + id)
@@ -49,6 +57,8 @@ export default function UserList(props) {
         alert(err);
       });
   };
+  
+  
   return (
     <div className="container">
       <h1>User List</h1>
