@@ -6,9 +6,15 @@ import { useState } from "react";
 import UserList from "./components/userList";
 import Register from "./components/register";
 import EditUser from "./components/editUser";
+
+
+
 function App() {
+  
   const [userDetail, setUserDetail] = useState();
   console.log("userDetail", userDetail);
+  
+  
   return (
     <BrowserRouter>
       <Routes>
@@ -30,5 +36,6 @@ function App() {
     </BrowserRouter>
   );
 }
+
 
 export default App;
