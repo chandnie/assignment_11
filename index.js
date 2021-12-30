@@ -4,9 +4,13 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 let Login = require("./schema/login");
 
+
+
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 app.post("/register", (req, res) => {
   Login.create({
     firstname: req.body.firstname,
@@ -20,6 +24,8 @@ app.post("/register", (req, res) => {
     }
   });
 });
+
+
 app.post("/login", (req, res) => {
   Login.findOne({
     email: req.body.email,
@@ -39,6 +45,8 @@ app.post("/login", (req, res) => {
   });
 });
 
+
+
 app.get("/getUsers", (req, res) => {
   Login.find(function (err, response) {
     if (err) {
@@ -48,6 +56,8 @@ app.get("/getUsers", (req, res) => {
     }
   });
 });
+
+
 
 app.post("/update/:id", (req, res) => {
   Login.findById(req.params.id, function (err, user) {
@@ -68,6 +78,9 @@ app.post("/update/:id", (req, res) => {
   });
 });
 
+
+
+
 app.delete("/delete/:id", (req, res) => {
   Login.findByIdAndRemove(req.params.id, function (err, todo) {
     if (!err) {
@@ -75,6 +88,9 @@ app.delete("/delete/:id", (req, res) => {
     } else res.status(200).send(err);
   });
 });
+
+
+
 
 const PORT = 4000;
 mongoose.connect("mongodb+srv://chandni:chandni123@@@cluster0.fwd1g.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true });
@@ -85,3 +101,6 @@ connection.once("open", function () {
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
 });
+
+
+
