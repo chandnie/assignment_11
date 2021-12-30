@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
+
 export default function EditUser(props) {
   //   console.log(props.match.params.id);
   console.log("userDetail", props.userDetail);
@@ -10,6 +12,8 @@ export default function EditUser(props) {
   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState();
 
+  
+  
   useEffect(() => {
     if (!props.userDetail) {
       navigate("/");
@@ -19,6 +23,8 @@ export default function EditUser(props) {
       setEmail(props.userDetail.email);
     }
   }, []);
+  
+  
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -38,6 +44,8 @@ export default function EditUser(props) {
         alert(err);
       });
   };
+  
+  
   return (
     <div className="container" style={{ marginTop: 10 }}>
       <h3 className="alert alert-dismissible fade show">edit user</h3>
@@ -54,6 +62,7 @@ export default function EditUser(props) {
             placeholder="Enter first name"
           />
         </div>
+
         <div className="form-outline mb-4">
           <label className="form-label" for="form3Example3">
           Your Last Name
@@ -66,6 +75,7 @@ export default function EditUser(props) {
             placeholder="Enter last name"
           />
         </div>
+
         <div className="form-outline mb-4">
           <label className="form-label" for="form3Example3">
           Your Email address
@@ -78,11 +88,13 @@ export default function EditUser(props) {
             placeholder="Enter a valid email address"
           />
         </div>
+
         <div className="text-center text-lg-start mt-4 pt-2">
           <button type="submit" className="btn btn-primary btn-lg pl-2 pr-2">
             Edit User
           </button>
         </div>
+
       </form>
     </div>
   );
